@@ -8,6 +8,10 @@
 node_modules/
 .vercel/
 
+# Secrets — never commit
+.env
+.env*.local
+
 # Editor local state
 .vscode/
 .idea/
