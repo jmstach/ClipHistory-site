@@ -40,8 +40,9 @@ See the comment at the top of the file.
 
 ## Analytics
 
-None yet. A privacy-friendly, cookieless snippet (e.g. Plausible) can be added
-once the domain is registered — drop it into `<head>` of each page.
+[Plausible](https://plausible.io) — privacy-friendly and cookieless. The
+snippet sits in the `<head>` of every page. No PII, no cross-site tracking;
+the privacy page documents it.
 
 ## OG image
 
