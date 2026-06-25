@@ -25,6 +25,9 @@
   let revealed = false;
 
   cta.addEventListener('click', function () {
+    // Count every download click; the .dmg lives on another subdomain and
+    // the `download` attribute keeps this page alive, so the beacon sends.
+    if (window.plausible) window.plausible('Download');
     if (revealed) return;
     revealed = true;
     subscribe.hidden = false;
@@ -72,6 +75,10 @@
 
       subscribe.hidden = true;
       successEl.hidden = false;
+
+      if (window.plausible) {
+        window.plausible('Subscribe', { props: { source: 'site_hero' } });
+      }
     } catch (err) {
       showError('Network error. Try again.');
       submit.disabled = false;
