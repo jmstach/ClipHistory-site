@@ -1,0 +1,12 @@
+{
+  "name": "cliphistory-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "cliphistory.stach.uk landing page and subscribe endpoint",
+  "scripts": {
+    "postinstall": "git config core.hooksPath .githooks || true"
+  },
+  "dependencies": {
+    "@vercel/node": "^3.2.0"
+  }
+}

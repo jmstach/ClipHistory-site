@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClipHistory — A privacy-respecting clipboard manager for macOS</title>
+  <meta name="description" content="A super-tiny, privacy-respecting, macOS-native clipboard manager. One hotkey, instant popup. Text, images, and files. Encrypted on disk, no telemetry, no subscription.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="ClipHistory — A privacy-respecting clipboard manager for macOS">
+  <meta property="og:description" content="One hotkey, instant popup. Text, images, and files. Encrypted on disk, no telemetry, no subscription.">
+  <meta property="og:url" content="https://cliphistory.stach.uk">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://cliphistory.stach.uk/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Plausible analytics to be added once the domain is registered. -->
+</head>
+<body>
+
+  <header class="brand">
+    <a href="/" aria-label="ClipHistory home">
+      <svg class="mark" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+        <circle cx="12" cy="12" r="12" fill="currentColor"/>
+        <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"
+              fill="none" stroke="var(--bg)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"
+              transform="translate(12 12) scale(0.6) translate(-12 -12)"/>
+      </svg>
+      <span class="wordmark">ClipHistory</span>
+    </a>
+  </header>
+
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-inner">
+
+      <div class="hero-content">
+        <h1>A super-tiny, <br>privacy-respecting, <br>macOS-native <br>clipboard manager.</h1>
+      </div>
+
+      <div class="hero-subhead">
+        <p>Everything you’ve copied, one keystroke away.</p>
+      </div>
+
+      <div class="hero-cta">
+        <a class="cta" href="https://downloads.cliphistory.stach.uk/ClipHistory.dmg" download="ClipHistory.dmg">Download for Mac</a>
+        <div class="meta">
+          <span>Free</span>
+          <span>~1&nbsp;MB</span>
+          <span>macOS&nbsp;14+</span>
+          <span>Notarised</span>
+        </div>
+
+        <div class="subscribe" hidden>
+          <form class="subscribe-form" novalidate>
+            <input
+              class="subscribe-input"
+              type="email"
+              name="email"
+              placeholder="your@email.com"
+              autocomplete="email"
+              aria-label="Email address"
+              required>
+            <button class="subscribe-submit" type="submit">Keep me updated</button>
+          </form>
+          <p class="subscribe-error" role="alert" hidden></p>
+        </div>
+
+        <p class="subscribe-success" role="status" hidden>
+          <span class="subscribe-check" aria-hidden="true">✓</span> You’re on the list.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="demo" aria-label="See it in action">
+    <h2 class="section-label">See it</h2>
+    <div class="demo-frame">
+      <video autoplay loop muted playsinline preload="metadata" poster="hero.jpg">
+        <source src="hero.mp4" type="video/mp4">
+      </video>
+    </div>
+  </section>
+
+  <section class="features" aria-label="What it does">
+    <h2 class="section-label">What it does</h2>
+
+    <div class="feature-grid">
+      <article class="feature">
+        <span class="feature-num">01</span>
+        <h3>A bottom tray,<br>by default</h3>
+        <p>A full&#8209;width tray rises from the bottom of the screen, showing your clips as large preview cards you scan with <kbd>←</kbd> <kbd>→</kbd>. Prefer a centred popup? It’s one setting away.</p>
+      </article>
+
+      <article class="feature">
+        <span class="feature-num">02</span>
+        <h3>Text, images,<br>and files</h3>
+        <p>Copy files in Finder and they land in your history. Paste drops the real files back, with a thumbnail for images. Plain text, rich text, and screenshots are all captured.</p>
+      </article>
+
+      <article class="feature">
+        <span class="feature-num">03</span>
+        <h3>Keeps your<br>formatting</h3>
+        <p><kbd>↵</kbd> pastes with the original styling; <kbd>⇧↵</kbd> pastes as plain text. Styled clips preview with their real bold, italics, and colour, so you know what you’re about to paste.</p>
+      </article>
+
+      <article class="feature">
+        <span class="feature-num">04</span>
+        <h3>Opens straight<br>into search</h3>
+        <p>A quiet Liquid Glass popup with no branding header or toolbar, just start typing to filter by content or source app. A clean type scale and legible keyboard hints throughout.</p>
+      </article>
+
+      <article class="feature">
+        <span class="feature-num">05</span>
+        <h3>Private<br>by design</h3>
+        <p>History is stored encrypted on disk with AES&#8209;256&#8209;GCM, the key in your Keychain. Password managers are skipped automatically, any app can be excluded, and there’s no account and no telemetry.</p>
+      </article>
+
+      <article class="feature">
+        <span class="feature-num">06</span>
+        <h3>Keyboard&#8209;first,<br>menu&#8209;bar&#8209;quiet</h3>
+        <p><kbd>⌘P</kbd> pins the selected clip, <kbd>⌘⌫</kbd> removes it, all without the mouse. Set the hotkey to whatever you like, and hide the menu bar icon entirely if you’d rather not see it.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="colophon" aria-label="About and proof">
+    <h2 class="col-label label-about">About</h2>
+    <h2 class="col-label label-proof">Proof</h2>
+
+    <div class="colophon-col colophon-about">
+      <p>
+        ClipHistory is based on the work of <a href="https://github.com/weiykong">Weiyuan Kong</a>, a genuinely
+        lovely clipboard manager: fast, native, encrypted, no telemetry. This is a personal fork by
+        <a href="https://justin.stach.uk">Justin</a>, a UK indie developer and product designer, that
+        rearranges the furniture to suit my taste: a bottom&#8209;tray mode, files alongside text and
+        images, formatting on paste, and a quieter search&#8209;first popup. Everything underneath: 
+        capture, encryption, search, exclusions, is the original’s, unchanged. The
+        <a href="https://github.com/weiykong/ClipHistory">original project</a> has the full story.
+      </p>
+    </div>
+
+    <div class="colophon-col colophon-trust">
+      <ul>
+        <li>Signed and notarised by Apple.</li>
+        <li>Encrypted on disk, zero telemetry, no account required.</li>
+        <li>Fits on a floppy — <a href="https://fitsonafloppy.com">read the manifesto</a>.</li>
+        <li>Free and open source under the <a href="https://github.com/jmstach/ClipHistory">MIT licence</a>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-copy">© 2026 <a href="https://stach.ltd">Stach LTD</a>. Crafted with care in London.</div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="https://github.com/jmstach/ClipHistory">GitHub</a>
+        <a href="/release-notes">Release notes</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="subscribe.js"></script>
+</body>
+</html>

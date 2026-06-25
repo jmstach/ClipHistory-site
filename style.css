@@ -1,0 +1,586 @@
+/* =========================================================================
+   ClipHistory landing page
+   Swiss baseline grid. Helvetica. Black on white, inverts in dark mode.
+   Grid unit: 8px. Body: 16 / 24 (3u leading).
+   Adapted from the Markset landing page.
+   ========================================================================= */
+
+:root {
+  --bg: #ffffff;
+  --fg: #000000;
+  --grid: 8px;
+  --gutter: 32px;
+  --max-w: 1280px;
+  --hairline: 1px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --fg: #ffffff;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+/* Browsers style [hidden] as display:none in the UA sheet without
+   !important, so any class that sets its own display (e.g. flex)
+   overrides it. This is the canonical defensive fix. */
+[hidden] { display: none !important; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Helvetica Neue', Helvetica, 'Arial', sans-serif;
+  font-size: 16px;
+  line-height: 24px;  /* 3 grid units */
+  font-weight: 400;
+  font-feature-settings: 'kern';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+a:hover { text-decoration-thickness: 2px; }
+
+code, kbd {
+  font-family: 'Menlo', ui-monospace, 'SF Mono', Monaco, monospace;
+  font-size: 0.85em;
+  letter-spacing: -0.01em;
+}
+
+kbd {
+  /* System font, not monospace: macOS renders the ⌘ ⇧ ⌫ ↵ key glyphs
+     properly in SF. Falls back to a generic glyph (or tofu for ⌫) on
+     non-Apple platforms, which is an acceptable trade for a Mac-only app. */
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', ui-sans-serif, sans-serif;
+  border: 1px solid currentColor;
+  padding: 1px 6px 2px;
+  font-size: 0.9em;
+  line-height: 1;
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+/* =========================================================================
+   Brand — fixed top-left
+   ========================================================================= */
+.brand {
+  position: fixed;
+  top: var(--gutter);
+  left: var(--gutter);
+  z-index: 100;
+}
+
+.brand a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.mark { display: block; }
+
+.wordmark {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* =========================================================================
+   Hero — static, no scroll-pin. Comfortable top space for the fixed brand.
+   ========================================================================= */
+.hero {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 192px var(--gutter) 96px;  /* 24u top clears the brand, 12u bottom */
+}
+
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;  /* 4u */
+  align-items: flex-start;
+}
+
+.hero h1 {
+  font-size: max(40px, min(7.5vw, 88px));
+  line-height: 1.04;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  margin: 0;
+}
+
+.hero-subhead {
+  max-width: 640px;
+}
+
+.hero-subhead p {
+  font-size: 20px;
+  line-height: 32px;
+  letter-spacing: -0.01em;
+  margin: 0;
+  opacity: 0.7;
+}
+
+.hero-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+@media (max-height: 820px) {
+  .hero { padding-top: 152px; }
+}
+
+@media (max-width: 720px) {
+  .hero { padding-top: 128px; }
+}
+
+.cta {
+  display: inline-block;
+  background: var(--fg);
+  color: var(--bg);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  padding: 16px 32px;
+  text-decoration: none;
+  letter-spacing: -0.005em;
+  border: 1px solid var(--fg);
+  transition: opacity 150ms ease;
+}
+
+.cta:hover {
+  opacity: 0.85;
+}
+
+.cta:active {
+  opacity: 0.7;
+}
+
+.meta {
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+  opacity: 0.55;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.meta span::after {
+  content: '·';
+  margin-left: 16px;
+  opacity: 0.5;
+}
+
+.meta span:last-child::after {
+  content: none;
+}
+
+/* Subscribe form — revealed below .meta after the user clicks Download. */
+.subscribe {
+  width: 100%;
+  max-width: 640px;
+  margin-top: 24px;  /* 3u above the input row */
+  animation: subscribe-fade-in 350ms cubic-bezier(.2, 0, 0, 1);
+}
+
+@keyframes subscribe-fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.subscribe-form {
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+  margin: 0;
+}
+
+.subscribe-input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  color: var(--fg);
+  border: 0;
+  border-bottom: 1px solid var(--fg);
+  padding: 8px 0;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  outline-offset: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0;
+}
+
+.subscribe-input::placeholder {
+  color: var(--fg);
+  opacity: 0.4;
+}
+
+.subscribe-input:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 4px;
+}
+
+.subscribe-submit {
+  background: transparent;
+  color: var(--fg);
+  border: 1px solid var(--fg);
+  padding: 8px 16px;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease, opacity 150ms ease;
+  border-radius: 0;
+  white-space: nowrap;
+}
+
+.subscribe-submit:hover {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.subscribe-submit:active { opacity: 0.7; }
+.subscribe-submit:disabled { opacity: 0.5; cursor: progress; background: transparent; color: var(--fg); }
+
+.subscribe-error {
+  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+}
+
+.subscribe-success {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 24px 0 0;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  animation: subscribe-fade-in 350ms cubic-bezier(.2, 0, 0, 1);
+}
+
+.subscribe-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: var(--fg);
+  color: var(--bg);
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .subscribe,
+  .subscribe-success {
+    animation: none;
+  }
+}
+
+/* =========================================================================
+   Demo — looping video of the bottom tray
+   ========================================================================= */
+.demo {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 96px var(--gutter);
+}
+
+.demo .section-label {
+  margin-bottom: 48px;
+}
+
+.demo-frame {
+  max-width: 1200px;
+  margin: 0 auto;
+  line-height: 0;  /* kill inline-element baseline gap under the video */
+}
+
+.demo video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--bg);
+}
+
+/* =========================================================================
+   Features
+   ========================================================================= */
+.features {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 96px var(--gutter);
+}
+
+.section-label {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  opacity: 0.55;
+  margin: 0 0 48px;  /* 6u */
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 64px;  /* 8u */
+  border-top: var(--hairline) solid currentColor;
+  padding-top: 48px;  /* 6u */
+}
+
+@media (max-width: 900px) {
+  .feature-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+.feature {
+  position: relative;
+}
+
+.feature-num {
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.12em;
+  opacity: 0.5;
+  display: block;
+  margin-bottom: 24px;  /* 3u */
+}
+
+.feature h3 {
+  font-size: 28px;
+  line-height: 32px;  /* 4u */
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 24px;  /* 3u */
+}
+
+.feature p {
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0;
+}
+
+.feature kbd {
+  font-size: 0.75em;
+}
+
+/* =========================================================================
+   Colophon — About + Proof, side-by-side at wide viewports.
+   ========================================================================= */
+.colophon {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 96px var(--gutter) 128px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  column-gap: 96px;
+  row-gap: 48px;
+  grid-template-areas:
+    "label-a label-p"
+    "body-a  body-p";
+}
+
+.label-about   { grid-area: label-a; }
+.label-proof   { grid-area: label-p; }
+.colophon-about {
+  grid-area: body-a;
+  border-top: var(--hairline) solid currentColor;
+  padding-top: 48px;
+}
+.colophon-trust {
+  grid-area: body-p;
+  border-top: var(--hairline) solid currentColor;
+  padding-top: 48px;
+}
+
+@media (max-width: 900px) {
+  .colophon {
+    grid-template-columns: 1fr;
+    row-gap: 24px;
+    grid-template-areas:
+      "label-a"
+      "body-a"
+      "label-p"
+      "body-p";
+  }
+  .label-proof {
+    margin-top: 32px;
+  }
+}
+
+.col-label {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  opacity: 0.55;
+  margin: 0;
+}
+
+.colophon-about p {
+  font-size: 20px;
+  line-height: 32px;
+  letter-spacing: -0.01em;
+  margin: 0;
+  max-width: 640px;
+}
+
+.colophon-trust ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  padding-top: 2px;
+}
+
+.colophon-trust li {
+  font-size: 14px;
+  line-height: 32px;  /* matches .colophon-about p */
+  font-weight: 700;
+  letter-spacing: -0.005em;
+}
+
+.colophon-trust li a {
+  font-weight: 700;
+}
+
+/* =========================================================================
+   Footer
+   ========================================================================= */
+footer {
+  border-top: var(--hairline) solid currentColor;
+}
+
+.footer-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 32px var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 32px;
+  font-size: 13px;
+  line-height: 24px;
+  letter-spacing: -0.005em;
+}
+
+.footer-copy {
+  opacity: 0.55;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 720px) {
+  .footer-inner { flex-direction: column; gap: 16px; }
+}
+
+/* =========================================================================
+   Sub-page layout (release-notes, privacy, terms)
+   ========================================================================= */
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 192px var(--gutter) 128px;  /* leaves room for the fixed brand */
+}
+
+.page h1 {
+  font-size: clamp(40px, 6vw, 64px);
+  line-height: 1.04;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin: 0 0 64px;
+}
+
+.page h2 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 64px 0 16px;
+  padding-top: 32px;
+  border-top: var(--hairline) solid currentColor;
+}
+
+.page h2:first-of-type {
+  margin-top: 0;
+}
+
+.page h3 {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  margin: 32px 0 8px;
+  opacity: 0.55;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.page p,
+.page li {
+  font-size: 18px;
+  line-height: 32px;
+  letter-spacing: -0.005em;
+  margin: 0 0 16px;
+}
+
+.page ul {
+  padding-left: 20px;
+  margin: 0 0 32px;
+}
+
+.page li {
+  margin-bottom: 8px;
+}
+
+.page code {
+  background: color-mix(in srgb, currentColor 8%, transparent);
+  padding: 1px 6px;
+  border-radius: 3px;
+}

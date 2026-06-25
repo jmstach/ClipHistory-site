@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+
+# Shippable binaries live off-repo, not in git
+*.dmg
+
+# Node / Vercel
+node_modules/
+.vercel/
+
+# Editor local state
+.vscode/
+.idea/
+*.swp

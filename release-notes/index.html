@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Release notes — ClipHistory</title>
+  <meta name="description" content="Release history for ClipHistory, a privacy-respecting macOS clipboard manager.">
+  <meta property="og:title" content="Release notes — ClipHistory">
+  <meta property="og:url" content="https://cliphistory.stach.uk/release-notes">
+  <meta property="og:type" content="article">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <header class="brand">
+    <a href="/" aria-label="ClipHistory home">
+      <svg class="mark" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+        <circle cx="12" cy="12" r="12" fill="currentColor"/>
+        <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"
+              fill="none" stroke="var(--bg)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"
+              transform="translate(12 12) scale(0.6) translate(-12 -12)"/>
+      </svg>
+      <span class="wordmark">ClipHistory</span>
+    </a>
+  </header>
+
+  <main class="page">
+    <h1>Release notes</h1>
+
+    <h2>This fork · 2026</h2>
+    <h3>What this fork changes</h3>
+    <p>ClipHistory is a personal fork of <a href="https://github.com/weiykong/ClipHistory">Weiyuan Kong’s ClipHistory</a>. The capture engine, AES&#8209;256&#8209;GCM encryption, search, and per&#8209;app exclusions are the original’s, unchanged. This fork rearranges the interaction design:</p>
+    <ul>
+      <li><strong>A bottom&#8209;tray mode.</strong> A full&#8209;width tray rises from the bottom of the screen, showing clips as large horizontal preview cards you scan with <kbd>←</kbd> / <kbd>→</kbd>. It’s the default now; the classic centred popup is still a setting away.</li>
+      <li><strong>Files, not just text and images.</strong> Copy files in Finder and they land in your history — paste drops the real files back, with a thumbnail preview for images.</li>
+      <li><strong>Paste keeps your formatting.</strong> <kbd>↵</kbd> pastes with the original styling; <kbd>⇧↵</kbd> pastes as plain text. Styled clips also preview with their real bold, italics, and colour.</li>
+      <li><strong>A redesigned, quieter popup.</strong> A Liquid Glass background, no branding header or toolbar buttons — it opens straight into search, with a cleaner type scale and legible keyboard hints.</li>
+      <li><strong>Open it where you want.</strong> Bottom tray, centre, top, bottom, or at the cursor — set the popup’s position in Settings.</li>
+      <li><strong>Keyboard&#8209;first pin and delete.</strong> <kbd>⌘P</kbd> pins the selected item, <kbd>⌘⌫</kbd> removes it, without reaching for the mouse.</li>
+      <li><strong>A quieter menu bar.</strong> Hide the menu bar icon entirely and reach Settings from the gear button in the popup.</li>
+      <li><strong>The shortcut recorder works.</strong> Fixed a bug where you couldn’t change the hotkey in Settings.</li>
+    </ul>
+    <p>Full version&#8209;by&#8209;version notes are published with each build on <a href="https://github.com/jmstach/ClipHistory/releases">GitHub Releases</a>.</p>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-copy">© 2026 <a href="https://stach.ltd">Stach LTD</a>. Built on <a href="https://github.com/weiykong/ClipHistory">ClipHistory</a> by Weiyuan Kong.</div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="https://github.com/jmstach/ClipHistory">GitHub</a>
+        <a href="/release-notes">Release notes</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>
