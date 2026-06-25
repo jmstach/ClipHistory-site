@@ -41,13 +41,13 @@ let wmSize = wordmark.size()
 wordmark.draw(at: NSPoint(x: margin + iconSize + 20, y: margin + (iconSize - wmSize.height) / 2))
 
 // Hero headline
-let headlineFont = NSFont(name: "HelveticaNeue-Bold", size: 72) ?? .boldSystemFont(ofSize: 72)
+let headlineFont = NSFont(name: "HelveticaNeue-Bold", size: 58) ?? .boldSystemFont(ofSize: 58)
 let headlinePara = NSMutableParagraphStyle()
-headlinePara.lineHeightMultiple = 1.02
-let headline = NSAttributedString(string: "Everything you’ve copied,\none keystroke away.", attributes: [
+headlinePara.lineHeightMultiple = 1.03
+let headline = NSAttributedString(string: "A super-tiny,\nprivacy-respecting,\nmacOS-native\nclipboard manager.", attributes: [
     .font: headlineFont,
     .foregroundColor: NSColor.black,
-    .kern: -2.5,
+    .kern: -1.6,
     .paragraphStyle: headlinePara,
 ])
 let headlineMaxWidth = W - margin * 2
@@ -55,13 +55,13 @@ let hBounds = headline.boundingRect(
     with: CGSize(width: headlineMaxWidth, height: .greatestFiniteMagnitude),
     options: [.usesLineFragmentOrigin, .usesFontLeading]
 )
-let headlineY = margin + iconSize + 72
+let headlineY = margin + iconSize + 52
 headline.draw(with: NSRect(x: margin, y: headlineY, width: headlineMaxWidth, height: hBounds.height),
               options: [.usesLineFragmentOrigin, .usesFontLeading])
 
 // Descriptor near the bottom
 let descFont = NSFont(name: "HelveticaNeue", size: 26) ?? .systemFont(ofSize: 26)
-let desc = NSAttributedString(string: "A super-tiny, privacy-respecting clipboard manager for macOS.", attributes: [
+let desc = NSAttributedString(string: "Everything you’ve copied, one keystroke away.", attributes: [
     .font: descFont,
     .foregroundColor: NSColor.black.withAlphaComponent(0.55),
     .kern: -0.3,
