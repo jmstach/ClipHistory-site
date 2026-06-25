@@ -25,9 +25,8 @@
   let revealed = false;
 
   cta.addEventListener('click', function () {
-    // Count every download click; the .dmg lives on another subdomain and
-    // the `download` attribute keeps this page alive, so the beacon sends.
-    if (window.plausible) window.plausible('Download');
+    // Download clicks are tracked by Plausible's built-in outbound/file
+    // goals (the .dmg is on a separate subdomain), so no custom event here.
     if (revealed) return;
     revealed = true;
     subscribe.hidden = false;
